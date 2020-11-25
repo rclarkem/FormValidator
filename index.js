@@ -19,34 +19,34 @@ function showSuccess(element) {
 function validEmail(email) {
   const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   if (re.test(String(email.value.trim()))) {
-    return showSuccess(email);
+    showSuccess(email);
   } else {
-    return showError(email, 'Email not Valid');
+    showError(email, 'Email not Valid');
   }
 }
 
 function checkRequired(inputs) {
-  return inputs.forEach((input) => {
+  inputs.forEach((input) => {
     if (input.value.trim() === '') {
-      return showError(input, `${getFieldName(input)} is required`);
+      showError(input, `${getFieldName(input)} is required`);
     } else {
-      return showSuccess(input);
+      showSuccess(input);
     }
   });
 }
 
 function getFieldName(input) {
-  return input.id.slice(0, 1).toUpperCase() + input.id.slice(1).toLowerCase();
+  input.id.slice(0, 1).toUpperCase() + input.id.slice(1).toLowerCase();
 }
 
 function checkLength(input, startLength, endlength) {
   console.log(input.value.length);
   if (input.value.length < startLength) {
-    return showError(input, `${getFieldName(input)} must be at least ${startLength} characters`);
+    showError(input, `${getFieldName(input)} must be at least ${startLength} characters`);
   } else if (input.value.length > endlength) {
-    return showError(input, `${getFieldName(input)} must not exceed ${endlength} characters`);
+    showError(input, `${getFieldName(input)} must not exceed ${endlength} characters`);
   } else {
-    return showSuccess(input);
+    showSuccess(input);
   }
 }
 
